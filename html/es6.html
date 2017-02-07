@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6</title>
+</head>
+<body>
+<script>
+
+    let obj = {first: 'hello', last: 'world'};
+    let {first: f, last: l} = obj;
+    console.log(f, l);
+
+    let foo = 5;
+    ({foo} = {foo: 1}); //  成功
+    console.log(foo);
+
+    var x = 1;
+    var y = 2;
+    var str = `${x} + ${y} = ${x + y}`;
+    console.log(str);
+
+    function t() {
+
+        const show = data =>
+            `<table>\n${data.map(row => `\t<tr>\n\t\t<td>${row.first}</td>\n\t\t<td>${row.last}</td>\n\t</tr>\n`).join("")}</table>`;
+
+        const data = [
+            {first: '<Jane>', last: 'Bond'},
+            {first: 'Lars', last: '<Croft>'},
+        ];
+        console.log(show(data));
+    }
+    t();
+
+    class B {
+    }
+    let b = new B();
+    console.log(b.constructor === B.prototype.constructor);// true
+</script>
+</body>
+</html>

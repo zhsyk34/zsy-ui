@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+    <style>
+        #s1 {
+            margin: 20px;
+            padding: 20px;
+            height: 80px;
+            background-color: #5bc0de;
+            font-size: 20px;
+        }
+
+        #s2 {
+            padding: 20px;
+            height: 40px;
+            background-color: #0f0f0f;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="s1">
+    s1
+    <div id="s2">s2</div>
+</div>
+
+<script>
+    const s1 = document.querySelector("#s1");
+    const s2 = document.querySelector("#s2");
+
+    s1.addEventListener("click", function (e) {
+        console.log(e);
+        console.log("s1 捕获");
+    }, true);
+    s2.addEventListener("click", function () {
+        console.log("s2 捕获");
+    }, true);
+
+    s1.addEventListener("click", function () {
+        console.log("s1 冒泡");
+    }, false);
+    s2.addEventListener("click", function () {
+        console.log("s2 冒泡");
+    }, false);
+
+    //    window.addEventListener("beforeunload", function (event) {
+    //        event.returnValue = "\o/";
+    //    });
+
+    // is equivalent to
+    window.addEventListener("beforeunload", function (event) {
+        event.preventDefault();
+    });
+
+    //    window.addEventListener("resize", function (event) {
+    //        event.returnValue = "放弃当前未保存内容而关闭页面？";
+    //    });
+
+</script>
+</body>
+</html>

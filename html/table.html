@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>table</title>
+    <base href="../">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/lib/css/table.css">
+</head>
+<body>
+<h1>Hello</h1>
+<div class="table-responsive" id="data"></div>
+
+<script src="lib/jquery.js"></script>
+<script src="js/lib/js/table.js"></script>
+<script>
+    const data = [{
+        "createTime": "2017-01-16T20:12:12.427",
+        "gatewayId": 2,
+        "id": 1,
+        "name": "name1",
+        "number": 3,
+        "permission": false,
+        "updateTime": "2017-01-16T20:12:12.428"
+    }, {
+        "createTime": "2017-01-16T20:12:12.428",
+        "gatewayId": 4,
+        "id": 2,
+        "name": "name2",
+        "number": 6,
+        "permission": true,
+        "updateTime": "2017-01-16T20:12:12.428"
+    }, {
+        "createTime": "2017-01-16T20:12:12.428",
+        "gatewayId": 6,
+        "id": 3,
+        "name": "name3",
+        "number": 9,
+        "permission": false,
+        "updateTime": "2017-01-16T20:12:12.428"
+    }, {
+        "createTime": "2017-01-16T20:12:12.428",
+        "gatewayId": 8,
+        "id": 4,
+        "name": "name4",
+        "number": 12,
+        "permission": true,
+        "updateTime": "2017-01-16T20:12:12.428"
+    }];
+    const $data = $("#data");
+    $data.grid({
+        // url: "lock/find",
+        data: data,
+        singleSelect: false,
+        clickSelect: true,
+        columns: [
+            {field: "name", title: "名称", width: 10},
+            {field: "number", title: "设备号", width: 10},
+            {field: "gatewayId", title: "网关", width: 10},
+            {field: "id", title: "序列号", width: 10},
+            {field: "createTime", title: "创建时间", width: 10}
+        ]
+    });
+
+    $("h1").on("click", function () {
+        console.log("reload");
+        $data.grid("reload");
+        $data.grid({clickSelect: true});
+    });
+</script>
+</body>
+</html>

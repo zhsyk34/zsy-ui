@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>def</title>
+</head>
+<body>
+<script>
+    //    one();
+    //    two();
+    function two() {
+        try {
+            let b = {};
+            Object.defineProperty(b, "p", {value: "这是不可改变的默认值", writable: false});
+            alert(b.p);
+            b.p = "改写！";
+            alert(b.p)
+        } catch (e) {
+            alert("你的游览器不支持Object.defineProperty ")
+        }
+    }
+    function one() {
+        try {
+            let a = {};
+            Object.defineProperty(a, "bloger", {
+                get: function () {
+                    return "司徒正美";
+                }
+            });
+            console.log(a.bloger);
+        } catch (e) {
+            alert("你的游览器不支持Object.defineProperty ")
+        }
+    }
+
+    try {
+        var obj = {foo: "test"};
+        console.log(Object.getOwnPropertyDescriptor(obj, "foo"));
+    } catch (e) {
+        alert("你的游览器不支持Object.defineProperty或 Object.getOwnPropertyDescriptor")
+    }
+</script>
+</body>
+</html>
